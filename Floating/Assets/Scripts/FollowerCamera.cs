@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class FollowerCamera : MonoBehaviour
 {
+    public Transform target;
+
+    public float smoothSpeed = 0.125f;
     public Vector3 offset;
-    public GameObject followingObject;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.position = followingObject.transform.position + offset;
-        transform.rotation = followingObject.transform.rotation;
+        Vector3 desiredPosition = target.position + offset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        transform.position = smoothedPosition;
+
+
+        transform.rotation = target.rotation;
+        transform.LookAt(target);
     }
 }

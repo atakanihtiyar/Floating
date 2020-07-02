@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Flight : MonoBehaviour
 {
-    private Rigidbody rb;
-
     public float speed;
-    public float rotSpeed1;
-    public Vector3 baseVelocity;
+    public float rotSpeed;
+    public float minSpeed;
+    public float maxSpeed;
+    public float acc;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -20,21 +20,42 @@ public class Flight : MonoBehaviour
     {
         transform.position += transform.forward * speed;
 
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            if (speed < maxSpeed)
+                speed += acc;
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            if (speed > minSpeed)
+                speed -= acc;
+        }
+
+
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.forward * rotSpeed1);
+            transform.Rotate(Vector3.forward * rotSpeed);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(Vector3.back * rotSpeed1);
+            transform.Rotate(Vector3.back * rotSpeed);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Rotate(Vector3.left * rotSpeed1);
+            transform.Rotate(Vector3.left * rotSpeed);
         }
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Rotate(Vector3.right * rotSpeed1);
+            transform.Rotate(Vector3.right * rotSpeed);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Rotate(Vector3.up * rotSpeed);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Rotate(Vector3.down * rotSpeed);
         }
     }
 }
