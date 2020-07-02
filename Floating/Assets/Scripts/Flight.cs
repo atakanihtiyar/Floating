@@ -16,25 +16,25 @@ public class Flight : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.position += transform.forward * Time.deltaTime * speed;
+        transform.position += transform.forward * speed;
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.forward * rotSpeed1 * Time.deltaTime);
+            transform.Rotate(Vector3.forward * rotSpeed1);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(Vector3.back * rotSpeed1 * Time.deltaTime);
+            transform.Rotate(Vector3.back * rotSpeed1);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Rotate(Vector3.left * rotSpeed1 * Time.deltaTime);
+            transform.Rotate(Vector3.left * rotSpeed1);
         }
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Rotate(Vector3.right * rotSpeed1 * Time.deltaTime);
+            transform.Rotate(Vector3.right * rotSpeed1);
         }
     }
 }
