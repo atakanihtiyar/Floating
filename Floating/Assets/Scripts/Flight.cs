@@ -7,33 +7,34 @@ public class Flight : MonoBehaviour
     private Rigidbody rb;
 
     public float speed;
-    public float rotationSpeed;
-    public Vector3 startVelocity;
-    
+    public float rotSpeed1;
+    public Vector3 baseVelocity;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.velocity = startVelocity;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float verticalInput = Input.GetAxis("Vertical");
-        float horizontalInput = Input.GetAxis("Horizontal");
+        transform.position += transform.forward * Time.deltaTime * speed;
 
-        if (verticalInput != 0)
+        if (Input.GetKey(KeyCode.A))
         {
-            verticalInput = verticalInput * speed;
-            transform.Rotate(verticalInput, 0, 0, Space.Self);
-            //rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + verticalInput, rb.velocity.z);
+            transform.Rotate(Vector3.forward * rotSpeed1 * Time.deltaTime);
         }
-
-        if (horizontalInput != 0)
+        if (Input.GetKey(KeyCode.D))
         {
-            horizontalInput = horizontalInput * rotationSpeed;
-
-            transform.Rotate(0, horizontalInput, 0, Space.Self);
+            transform.Rotate(Vector3.back * rotSpeed1 * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Rotate(Vector3.left * rotSpeed1 * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Rotate(Vector3.right * rotSpeed1 * Time.deltaTime);
         }
     }
 }
