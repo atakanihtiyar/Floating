@@ -58,4 +58,9 @@ public class Flight : MonoBehaviour
             transform.Rotate(Vector3.down * rotSpeed);
         }
     }
+
+    public void ResetSpeed()
+    {
+        speed = 0;
+    }
 }
