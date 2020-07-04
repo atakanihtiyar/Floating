@@ -272,7 +272,7 @@ ParticleSystem:
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
+  useRigidbodyForVelocity: 0
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -5364,7 +5364,8 @@ MonoBehaviour:
   rotSpeed: 1
   minSpeed: 0
   maxSpeed: 7
-  acc: 0.01
+  gravityAcc: 0.005
+  engineAcc: 0.01
   failure: 0.05
 --- !u!1 &922919715
 GameObject:
@@ -5558,8 +5559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 803631032}
   smoothSpeed: 0.125
-  offsetYMultiplier: 20
-  offsetZMultiplier: 50
+  offsetMultiplier: {x: 0, y: 20, z: 50}
 --- !u!1001 &1005711577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6087,7 +6087,7 @@ ParticleSystem:
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
+  useRigidbodyForVelocity: 0
   startDelay:
     serializedVersion: 2
     minMaxState: 0
